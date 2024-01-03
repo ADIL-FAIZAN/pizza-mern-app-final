@@ -12,7 +12,7 @@ const deletes =require("./routes/deletedata")
 const cors = require('cors');
 const { required } = require('joi');
 const app=express();
-
+require('dotenv').config();
 
 
 
@@ -34,7 +34,7 @@ app.use('/api/deletedata',deletes)
 
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/PizzaDatabase")
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log("Connecting with mongodb database"))
 .catch(err => console.error("Error connecting to MongoDB:", err.message));
   
